@@ -1,4 +1,5 @@
-#include "types.h"
+#include <arch/i386/direct_tty_utils.h>
+#include <common/types.h>
 
 void printf( int8_t* str )
 {
@@ -28,3 +29,19 @@ void printf( int8_t* str )
         }
     }
 }
+
+void printhex( uint32_t num )
+{
+    static int8_t* keytxt = "00000000\0";
+    static int8_t* hex = "0123456789ABCDEF";
+    keytxt[0] = hex[(num >> 28) & 0xF];
+    keytxt[1] = hex[(num >> 24) & 0xF];
+    keytxt[2] = hex[(num >> 20) & 0xF];
+    keytxt[3] = hex[(num >> 16) & 0xF];
+    keytxt[4] = hex[(num >> 12) & 0xF];
+    keytxt[5] = hex[(num >>  8) & 0xF];
+    keytxt[6] = hex[(num >>  4) & 0xF];
+    keytxt[7] = hex[(num >>  0) & 0xF];
+    printf( keytxt );
+}
+

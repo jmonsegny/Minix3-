@@ -1,16 +1,20 @@
-GCCPARAMS = -m32 -Iinclude -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
+GCCPARAMS = -m32 -Iminix/include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
 objects = obj/minix/kernel/arch/i386/head.o \
+	obj/minix/kernel/arch/i386/mpx.o \
 	obj/minix/kernel/arch/i386/pre_init.o \
-	obj/minix/kernel/arch/i386/direct_tty_utils.o
+	obj/minix/kernel/arch/i386/direct_tty_utils.o \
+	obj/minix/kernel/arch/i386/klib.o \
+	obj/minix/kernel/arch/i386/pg.o \
+	obj/minix/kernel/main.o
 
 obj/%.o: %.cpp
 	mkdir -p $(@D)
 	g++ $(GCCPARAMS) -o $@ -c $<
 
-obj/%.o: %.s
+obj/%.o: %.S
 	mkdir -p $(@D)
 	as $(ASPARAMS) -o $@ $<
 
