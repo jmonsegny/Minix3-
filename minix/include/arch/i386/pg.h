@@ -20,7 +20,7 @@ const uint32_t I386_CR4_PGE = 0x00000080;
 const uint32_t I386_CR4_PSE = 0x00000010;
 const uint32_t I386_CR0_WP = 0x00010000;
 
-class pg
+class Paging
 {
 public:
     void clear();

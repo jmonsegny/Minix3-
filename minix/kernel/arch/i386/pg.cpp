@@ -12,7 +12,7 @@ static uint32_t kern_virt_start = (uint32_t) &kern_virt_base;
 static uint32_t kern_len = (uint32_t) &kern_size;
 
 // Make zero the page dir array
-void pg::
+void Paging::
 clear()
 {
 	// For all the page directories
@@ -22,7 +22,7 @@ clear()
 
 // Fill the page dir array 1-1 with memory.
 // Non present memory is flagged as invalid
-void pg::
+void Paging::
 identity( uint32_t mem_high_phys )
 {
 	// For all the page directories
@@ -48,7 +48,7 @@ identity( uint32_t mem_high_phys )
 	}
 }
 
-void pg::
+void Paging::
 map_kernel()
 {
 	// Physical position of the kernel
@@ -74,7 +74,7 @@ map_kernel()
 	}
 }
 
-void pg::
+void Paging::
 enable()
 {
 	// Read cr0 and cr4
@@ -106,7 +106,7 @@ enable()
 	write_cr4( cr4 );
 }
 
-void pg::
+void Paging::
 load()
 {
 	// Tell the cpu the page directory adress

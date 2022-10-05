@@ -27,7 +27,7 @@ extern "C" void pre_init( void* multiboot_structure, uint32_t magicnumber )
 	printf( "pre_init --- Minix3++\n" );
 
 	// Copy multiboot
-    multiboot mb;
+    Multiboot mb;
     memcpy( (uint8_t*)(&mb), (uint8_t*)multiboot_structure, sizeof(mb) );
 
 	// Write some multiboot info
@@ -41,7 +41,7 @@ extern "C" void pre_init( void* multiboot_structure, uint32_t magicnumber )
 	printf( "mods_count: " ); printhex( mb._mods_count ); printf("\n");
 
 	// Setup the initial paging
-	static pg init_pages;
+	static Paging init_pages;
 	init_pages.clear();
 	init_pages.identity( mb._mem_upper*1024 ); // _mem_upper in Kb -> b
 	init_pages.map_kernel();

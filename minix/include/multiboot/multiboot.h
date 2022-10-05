@@ -2,7 +2,7 @@
 
 #include <common/types.h>
 
-class multiboot
+class Multiboot
 {
 public:
 	uint32_t _flags;

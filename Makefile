@@ -1,4 +1,4 @@
-GCCPARAMS = -m32 -Iminix/include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings
+GCCPARAMS = -m32 -Iminix/include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-threadsafe-statics
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
@@ -8,6 +8,11 @@ objects = obj/minix/kernel/arch/i386/head.o \
 	obj/minix/kernel/arch/i386/direct_tty_utils.o \
 	obj/minix/kernel/arch/i386/klib.o \
 	obj/minix/kernel/arch/i386/pg.o \
+    obj/minix/kernel/arch/i386/segment.o \
+	obj/minix/kernel/arch/i386/gdt.o \
+	obj/minix/kernel/arch/i386/gate.o \
+	obj/minix/kernel/arch/i386/idt.o \
+	obj/minix/kernel/kernel.o \
 	obj/minix/kernel/main.o
 
 obj/%.o: %.cpp

@@ -45,3 +45,94 @@ write_cr4:
 	jmp 0f
 0:	pop %ebp
 	ret
+
+.global x86_lgdt
+x86_lgdt:
+	push %ebp
+	mov %esp, %ebp
+	mov 8(%ebp), %eax
+	lgdt (%eax)
+	pop %ebp
+	ret
+
+.global x86_lidt
+x86_lidt:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    lidtl (%eax)
+    pop %ebp
+    ret
+
+.global x86_lldt
+x86_lldt:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    lldt 8(%ebp)
+    pop %ebp
+    ret
+
+// KERN_CS_SELECTOR = 1*8
+.global x86_load_kerncs
+x86_load_kerncs:
+	push %ebp
+	mov %esp, %ebp
+	mov 8(%ebp), %eax
+	jmp $8, $newcs
+newcs:
+	pop %ebp
+	ret
+
+.global x86_load_ds 
+x86_load_ds:
+	push %ebp
+	mov %esp, %ebp
+	mov 8(%ebp), %eax
+	mov %ax, %ds 
+	jmp 0f
+0:	pop %ebp
+	ret
+
+.global x86_load_es
+x86_load_es:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %ax, %es
+    jmp 0f
+0:  pop %ebp
+    ret
+
+.global x86_load_fs
+x86_load_fs:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %ax, %fs
+    jmp 0f
+0:  pop %ebp
+    ret
+
+.global x86_load_gs
+x86_load_gs:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %ax, %gs
+    jmp 0f
+0:  pop %ebp
+    ret
+
+.global x86_load_ss
+x86_load_ss:
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %ax, %ss
+    jmp 0f
+0:  pop %ebp
+    ret
+
+
+
