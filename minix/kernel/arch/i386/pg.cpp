@@ -1,5 +1,6 @@
 #include <arch/i386/pg.h>
 #include <arch/i386/klib.h>
+#include <arch/i386/direct_tty_utils.h>
 
 // Variables from the linker script
 extern uint8_t kern_phys_base;
@@ -15,6 +16,9 @@ static uint32_t kern_len = (uint32_t) &kern_size;
 void Paging::
 clear()
 {
+	/*kprintf("pagedir ");
+	kprinthex( (uint32_t)_pagedir );
+    kprintf("\n");*/
 	// For all the page directories
 	for( int i = 0; i < I386_VM_DIR_ENTRIES; i++ )
 		_pagedir[i] = 0;
@@ -109,6 +113,8 @@ enable()
 void Paging::
 load()
 {
+	//kprinthex( (uint32_t)_pagedir );
+	//kprintf("\n");
 	// Tell the cpu the page directory adress
 	write_cr3( (uint32_t)_pagedir );
 }

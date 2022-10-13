@@ -1,7 +1,7 @@
 #include <arch/i386/gate.h>
+#include <common/types.h>
+#include <arch/i386/arch_const.h>
 
-const uint16_t KERN_CS_INDEX = 1; // Unify with other definition
-const uint16_t KERN_CS_SELECTOR = KERN_CS_INDEX*8;
 
 void GateDesc::
 set_gate_desc( uint32_t offset, uint8_t p_dpl_type )

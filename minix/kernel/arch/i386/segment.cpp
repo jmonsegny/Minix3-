@@ -1,7 +1,6 @@
 #include <arch/i386/segment.h>
-
-//const uint32_t I386_GRAN_LIMIT = 65535;
-//const uint32_t DEFAULT = 0x40;
+#include <common/types.h>
+#include <arch/i386/arch_const.h>
 
 void SegmentDesc::
 set_seg_desc( uint32_t base, uint32_t limit, uint8_t flags )

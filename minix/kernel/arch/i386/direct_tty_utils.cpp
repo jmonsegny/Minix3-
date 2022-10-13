@@ -1,7 +1,7 @@
 #include <arch/i386/direct_tty_utils.h>
 #include <common/types.h>
 
-void printf( int8_t* str )
+void kprintf( int8_t* str )
 {
     static uint16_t* VideoMemory = (uint16_t*)0xb8000;
 
@@ -30,7 +30,7 @@ void printf( int8_t* str )
     }
 }
 
-void printhex( uint32_t num )
+void kprinthex( uint32_t num )
 {
     static int8_t* keytxt = "00000000\0";
     static int8_t* hex = "0123456789ABCDEF";
@@ -42,6 +42,6 @@ void printhex( uint32_t num )
     keytxt[5] = hex[(num >>  8) & 0xF];
     keytxt[6] = hex[(num >>  4) & 0xF];
     keytxt[7] = hex[(num >>  0) & 0xF];
-    printf( keytxt );
+    kprintf( keytxt );
 }
 

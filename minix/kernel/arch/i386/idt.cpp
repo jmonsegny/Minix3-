@@ -1,12 +1,8 @@
 #include <arch/i386/idt.h>
 #include <common/types.h>
+#include <arch/i386/arch_const.h>
 #include <arch/i386/mpx.h>
 #include <arch/i386/klib.h>
-
-const uint8_t INTR_PRIVILEGE = 0;  // also defined elsewhere
-const uint8_t PRESENT = 0x80;
-const uint8_t INT_GATE_TYPE = 6 | 0x08;
-const uint8_t DPL_SHIFT = 5;
 
 // IRQ table
 static struct GateEntry gate_table_pic[] = {

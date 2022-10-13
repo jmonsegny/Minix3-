@@ -6,12 +6,17 @@ objects = obj/minix/kernel/arch/i386/head.o \
 	obj/minix/kernel/arch/i386/mpx.o \
 	obj/minix/kernel/arch/i386/pre_init.o \
 	obj/minix/kernel/arch/i386/direct_tty_utils.o \
+	obj/minix/kernel/arch/i386/utils.o \
 	obj/minix/kernel/arch/i386/klib.o \
+	obj/minix/kernel/arch/i386/protect.o \
+	obj/minix/kernel/arch/i386/cpufeature.o \
+	obj/minix/kernel/arch/i386/i8259.o \
 	obj/minix/kernel/arch/i386/pg.o \
-    obj/minix/kernel/arch/i386/segment.o \
+	obj/minix/kernel/arch/i386/segment.o \
 	obj/minix/kernel/arch/i386/gdt.o \
 	obj/minix/kernel/arch/i386/gate.o \
 	obj/minix/kernel/arch/i386/idt.o \
+	obj/minix/kernel/call.o \
 	obj/minix/kernel/kernel.o \
 	obj/minix/kernel/main.o
 
@@ -39,12 +44,18 @@ minix3pp.iso: minix3pp.bin
 	echo ' boot'                         >> iso/boot/grub/grub.cfg
 	echo '}'                             >> iso/boot/grub/grub.cfg
 	grub2-mkrescue --output=$@ iso
-	rm -rf iso/
+	rm -R iso
 
 run: minix3pp.iso
 	(killall VirtualBoxVM && sleep 1) || true
-	VirtualBoxVM --startvm "Minix3plusplus" &
+	VirtualBoxVM --startvm "Minix3plusplus" 2> log.txt &
 
+runb: minix3pp.iso
+	bochs -f bochsrc.txt -q
+
+runq: minix3pp.iso
+	qemu-system-x86_64 -boot d -cdrom minix3pp.iso -m 64
+	
 #install: minix3pp.bin
 #   sudo cp $< /boot/minix3pp.bin
 

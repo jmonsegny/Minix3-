@@ -1,27 +1,7 @@
 #include <arch/i386/gdt.h>
 #include <common/types.h>
+#include <arch/i386/arch_const.h>
 #include <arch/i386/klib.h>
-
-const uint16_t KERN_CS_INDEX = 1;
-const uint16_t KERN_DS_INDEX = 2;
-const uint16_t USER_CS_INDEX = 3;
-const uint16_t USER_DS_INDEX = 4;
-const uint16_t LDT_INDEX = 5;
-
-const uint16_t LDT_SELECTOR = LDT_INDEX*8;
-
-const uint8_t INTR_PRIVILEGE = 0;
-const uint8_t USER_PRIVILEGE = 3;
-const uint8_t DPL_SHIFT = 5;
-
-const uint8_t PRESENT = 0x80;
-const uint8_t SEGMENT = 0x10;
-const uint8_t EXECUTABLE = 0x08;
-const uint8_t READABLE = 0x02;
-const uint8_t WRITABLE = 0x02;
-const uint8_t ACCESSED = 0x01;
-
-const uint8_t LDT = 2;
 
 GlobalDescTable::
 GlobalDescTable()
@@ -53,12 +33,20 @@ GlobalDescTable()
 
 	// LDT descriptor
     access = PRESENT | LDT;
-    _gdt[LDT_INDEX].set_seg_desc( 0, 0, access | LDT );
+    _gdt[LDT_INDEX].set_seg_desc( 0, 0, access );
 }
 
 void GlobalDescTable::
 load()
 {
 	x86_lgdt( &_gdt_ptr );
-	//x86_lldt( LDT_SELECTOR );
+}
+
+uint32_t GlobalDescTable::
+init_tss( uint8_t cpu, tss_s*  tss )
+{
+	uint8_t access = PRESENT | (INTR_PRIVILEGE << DPL_SHIFT) | TSS_TYPE;
+    _gdt[TSS_INDEX + cpu].set_seg_desc( (uint32_t)tss, sizeof(tss_s), access );
+
+	return (TSS_INDEX + cpu)*DESC_SIZE;
 }

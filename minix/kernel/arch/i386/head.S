@@ -29,14 +29,15 @@
 
 MINIX:
     mov $kernel_stack, %esp
+	push %eax # magic number
+    push %ebx # multiboot ptr
     call callConstructors
-    push %eax
-    push %ebx
     call pre_init
 
-	mov $k_initial_stktop, %esp
+	mov $k_initial_stktop, %esp # Returns multiboot ptr in %eax
 	push $0
-	push %eax
+	push $k_initial_stktop	
+	push %eax # multiboot ptr
 	call kmain
 
 _stop:

@@ -1,21 +1,9 @@
 #pragma once
 
 #include <common/types.h>
+#include <arch/i386/arch_const.h>
 #include <arch/i386/gate.h>
 #include <arch/i386/desctable.h>
-
-const uint16_t IDT_SIZE = 256;
-
-// IRQ NUMBERS
-const uint16_t IRQ0 = 0x50 + 0;
-const uint16_t IRQ1 = 0x50 + 1;
-// ...
-const uint16_t IRQ8 = 0x70 + 0;
-const uint16_t IRQ9 = 0x70 + 1;
-// ...
-
-// EXCEPTION NUMBERS
-const uint16_t DIVIDE_ERROR = 0;
 
 struct GateEntry
 {
