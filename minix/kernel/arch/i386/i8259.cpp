@@ -1,5 +1,5 @@
 #include <arch/i386/i8259.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/klib.h>
 
 int32_t init_intr( int32_t auto_eoi )

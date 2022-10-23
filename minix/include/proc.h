@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/stackframe.h>
 
 /* Bits for the runtime flags. A process is runnable iff p_rts_flags == 0. */

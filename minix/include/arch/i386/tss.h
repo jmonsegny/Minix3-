@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 struct tss_s {
 	uint32_t _backlink; // 1

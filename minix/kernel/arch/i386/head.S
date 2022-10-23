@@ -21,8 +21,10 @@
 
 
 .section .text
-.extern pre_init
-.extern kmain
+#.extern pre_init
+.extern _Z8pre_initPvj
+#.extern kmain
+.extern _Z5kmainPvS_
 .extern k_initial_stktop
 .extern callConstructors
 .global MINIX
@@ -32,13 +34,15 @@ MINIX:
 	push %eax # magic number
     push %ebx # multiboot ptr
     call callConstructors
-    call pre_init
+#    call pre_init
+	call _Z8pre_initPvj
 
 	mov $k_initial_stktop, %esp # Returns multiboot ptr in %eax
 	push $0
 	push $k_initial_stktop	
 	push %eax # multiboot ptr
-	call kmain
+#	call kmain
+	call _Z5kmainPvS_
 
 _stop:
     cli

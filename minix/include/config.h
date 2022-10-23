@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 const uint32_t NR_SYS_PROCS = 64;
 const uint32_t NR_PROCS = 256;

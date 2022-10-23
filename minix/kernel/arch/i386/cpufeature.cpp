@@ -1,4 +1,4 @@
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/klib.h>
 #include <arch/i386/utils.h>
 

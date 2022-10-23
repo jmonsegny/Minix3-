@@ -1,5 +1,5 @@
 #include <arch/i386/segment.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/arch_const.h>
 
 void SegmentDesc::

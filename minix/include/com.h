@@ -1,5 +1,9 @@
 #pragma once
 
+#include <arch/i386/types.h>
+
+const uint8_t NR_TASKS = 8; // Move from other places to here
+
 const uint16_t KERNEL_CALL      = 600;
 
 const uint16_t SYS_FORK         = KERNEL_CALL + 0;

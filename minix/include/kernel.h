@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <kinfo.h>
 #include <arch/i386/gdt.h>
 #include <arch/i386/idt.h>

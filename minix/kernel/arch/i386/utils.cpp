@@ -1,5 +1,5 @@
 #include <arch/i386/utils.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 // Kernel memcpy
 void kmemcpy( uint8_t* dst, uint8_t* src, uint32_t sz )

@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/arch_const.h>
 #include <arch/i386/gate.h>
 #include <arch/i386/desctable.h>

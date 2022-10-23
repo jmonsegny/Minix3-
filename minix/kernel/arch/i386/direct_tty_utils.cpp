@@ -1,5 +1,5 @@
 #include <arch/i386/direct_tty_utils.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 void kprintf( int8_t* str )
 {

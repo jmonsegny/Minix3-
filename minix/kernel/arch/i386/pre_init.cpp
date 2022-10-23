@@ -1,4 +1,4 @@
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/multiboot.h>
 #include <arch/i386/pg.h>
 #include <arch/i386/direct_tty_utils.h>
@@ -14,8 +14,10 @@ extern "C" void callConstructors()
         (*i)();
 }
 
+
+
 // Preinitialization of Minix 3
-extern "C" void* pre_init( void* multiboot_structure, uint32_t magicnumber )
+void* pre_init( void* multiboot_structure, uint32_t magicnumber )
 {
 	kprintf( "pre_init --- Minix3++\n" );
 	kprinthex( (uint32_t)multiboot_structure ); kprintf("\n");

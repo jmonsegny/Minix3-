@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 const uint32_t MAX_CPUS = 8;
 const uint32_t K_STACK_SIZE = 4096;
@@ -91,9 +91,6 @@ const uint8_t INT_GATE_TYPE = INT_286_GATE | DESC_386_BIT;
 const uint8_t TSS_TYPE = AVL_286_TSS | DESC_386_BIT;
 
 const uint8_t X86_STACK_TOP_PRESERVED = 2*sizeof(uint32_t);
-
-// TODO: to config file
-const uint16_t NR_TASKS = 5;
 
 
 

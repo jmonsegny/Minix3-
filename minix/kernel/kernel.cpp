@@ -1,5 +1,5 @@
 #include <kernel.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/arch_const.h>
 #include <com.h>
 #include <arch/i386/direct_tty_utils.h>
@@ -107,6 +107,7 @@ void Kernel::
 read_mb( void* mb_ptr )
 {
 	kmemcpy( (uint8_t*)(&_kinfo._mb), (uint8_t*)mb_ptr, sizeof(_kinfo._mb) );
+	//TODO: kmemcpy( (uint8_t*)(&_kinfo._kmess), (uint8_t*)
 
 	// Write some multiboot info
 	Multiboot &mb = _kinfo._mb;

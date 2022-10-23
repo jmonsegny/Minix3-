@@ -1,6 +1,6 @@
 #pragma once
 
-#include <common/types.h>
+#include <arch/i386/types.h>
 
 /* 8259A interrupt controller ports. */
 const uint8_t INT_CTL      = 0x20;  /* I/O port for interrupt controller */

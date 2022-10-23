@@ -1,5 +1,5 @@
 #include <arch/i386/idt.h>
-#include <common/types.h>
+#include <arch/i386/types.h>
 #include <arch/i386/arch_const.h>
 #include <arch/i386/mpx.h>
 #include <arch/i386/klib.h>
