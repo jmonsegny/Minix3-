@@ -46,7 +46,7 @@ uint32_t get_cpu_feature( uint32_t feature )
         cpuid( &ef_eax, &ef_ebx, &ef_ecx, &ef_edx );
     }
 
-	// Get queried info
+    // Get queried info
     /*switch( cpufeature ) {
         
     }*/

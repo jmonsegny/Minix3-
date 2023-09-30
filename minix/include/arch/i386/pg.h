@@ -11,8 +11,10 @@ public:
     void map_kernel();
     void load();
     void enable();
-
-	// Very important this array is aligned at 4096 bits because cr3 only
-	// uses first 20 bits to find the page directory. 	
-	alignas(4096) uint32_t _pagedir[I386_VM_DIR_ENTRIES];
+private:
+    // Very important this array is aligned at 4096 bits because cr3 only
+    // uses first 20 bits to find the page directory.
+    // The alignement doesn't work always as a class member,
+    // unless it's static     
+    static uint32_t pagedir[I386_VM_DIR_ENTRIES]__attribute__((aligned(4096)));
 };

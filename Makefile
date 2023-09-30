@@ -1,4 +1,4 @@
-GCCPARAMS = -m32 -Iminix/include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-threadsafe-statics
+GCCPARAMS = -m32 -Iminix/include -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -Wno-write-strings -fno-threadsafe-statics -std=c++11
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
@@ -54,7 +54,7 @@ runb: minix3pp.iso
 	bochs -f bochsrc.txt -q
 
 runq: minix3pp.iso
-	qemu-system-x86_64 -boot d -cdrom minix3pp.iso -m 64
+	qemu-system-x86_64 -boot d -cdrom minix3pp.iso -m 64 -D qemu_log.txt
 	
 #install: minix3pp.bin
 #   sudo cp $< /boot/minix3pp.bin

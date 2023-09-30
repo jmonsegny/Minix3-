@@ -2,11 +2,11 @@
 
 .global read_cr0
 read_cr0:
-	push %ebp
-	mov %esp, %ebp
-	mov %cr0, %eax
-	pop %ebp
-	ret
+    push %ebp
+    mov %esp, %ebp
+    mov %cr0, %eax
+    pop %ebp
+    ret
 
 .global read_cr4
 read_cr4:
@@ -38,22 +38,22 @@ write_cr3:
 
 .global write_cr4
 write_cr4:
-	push %ebp
-	mov %esp, %ebp
-	mov 8(%ebp), %eax
-	mov %eax, %cr4
-	jmp 0f
-0:	pop %ebp
-	ret
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %eax, %cr4
+    jmp 0f
+0:  pop %ebp
+    ret
 
 .global x86_lgdt
 x86_lgdt:
-	push %ebp
-	mov %esp, %ebp
-	mov 8(%ebp), %eax
-	lgdt (%eax)
-	pop %ebp
-	ret
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    lgdt (%eax)
+    pop %ebp
+    ret
 
 .global x86_lidt
 x86_lidt:
@@ -85,23 +85,23 @@ x86_ltr:
 // KERN_CS_SELECTOR = 1*8
 .global x86_load_kerncs
 x86_load_kerncs:
-	push %ebp
-	mov %esp, %ebp
-	mov 8(%ebp), %eax
-	jmp $8, $newcs
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    jmp $8, $newcs
 newcs:
-	pop %ebp
-	ret
+    pop %ebp
+    ret
 
 .global x86_load_ds 
 x86_load_ds:
-	push %ebp
-	mov %esp, %ebp
-	mov 8(%ebp), %eax
-	mov %ax, %ds 
-	jmp 0f
-0:	pop %ebp
-	ret
+    push %ebp
+    mov %esp, %ebp
+    mov 8(%ebp), %eax
+    mov %ax, %ds 
+    jmp 0f
+0:  pop %ebp
+    ret
 
 .global x86_load_es
 x86_load_es:
@@ -146,21 +146,21 @@ x86_load_ss:
 
 .global cpuid
 cpuid:
-	push %ebp
-	push %ebx
+    push %ebp
+    push %ebx
 	
-	movl 12(%esp), %ebp
-	mov (%ebp), %eax
-	movl 16(%esp), %ebp
-	mov (%ebp), %ebx
-	movl 20(%esp), %ebp
-	mov (%ebp), %ecx
-	movl 24(%esp), %ebp
-	mov (%ebp), %edx
+    movl 12(%esp), %ebp
+    mov (%ebp), %eax
+    movl 16(%esp), %ebp
+    mov (%ebp), %ebx
+    movl 20(%esp), %ebp
+    mov (%ebp), %ecx
+    movl 24(%esp), %ebp
+    mov (%ebp), %edx
 
-	cpuid
+    cpuid
 
-	movl 12(%esp), %ebp
+    movl 12(%esp), %ebp
     mov %eax, (%ebp)
     movl 16(%esp), %ebp
     mov %ebx, (%ebp)
@@ -169,17 +169,17 @@ cpuid:
     movl 24(%esp), %ebp
     mov %edx, (%ebp)
 
-	pop %ebx
-	pop %ebp
+    pop %ebx
+    pop %ebp
 	
-	ret
+    ret
 
 .global outb
 outb:
-	push %ebp
-	movl %esp, %ebp
-	movl 8(%ebp), %edx
-	movl 12(%ebp), %eax
-	outb %dx
-	pop %ebp
-	ret
+    push %ebp
+    movl %esp, %ebp
+    movl 8(%ebp), %edx
+    movl 12(%ebp), %eax
+    outb %dx
+    pop %ebp
+    ret

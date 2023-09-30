@@ -9,10 +9,10 @@
 class GlobalDescTable
 {
 public:
-	GlobalDescTable();
-	void load();
-	uint32_t init_tss( uint8_t cpu, tss_s* tss );
+    GlobalDescTable();
+    void load();
+    uint32_t init_tss( uint8_t cpu, tss_s* tss );
 private:
-	SegmentDesc _gdt[GDT_SIZE];
-	DescTablePtr _gdt_ptr;
+    SegmentDesc _gdt[GDT_SIZE];
+    DescTablePtr _gdt_ptr;
 };

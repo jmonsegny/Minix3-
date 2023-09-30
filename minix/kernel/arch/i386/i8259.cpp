@@ -23,7 +23,7 @@ int32_t init_intr( int32_t auto_eoi )
     if( auto_eoi )
         outb( INT2_CTLMASK, ICW4_AT_AEOI_SLAVE );
 
-        outb( INT2_CTLMASK, ICW4_AT_SLAVE );
+    outb( INT2_CTLMASK, ICW4_AT_SLAVE );
 
     outb( INT2_CTLMASK, ~0 );
 

@@ -31,18 +31,18 @@
 
 MINIX:
     mov $kernel_stack, %esp
-	push %eax # magic number
+    push %eax # magic number
     push %ebx # multiboot ptr
     call callConstructors
 #    call pre_init
-	call _Z8pre_initPvj
+    call _Z8pre_initPvj
 
-	mov $k_initial_stktop, %esp # Returns multiboot ptr in %eax
-	push $0
-	push $k_initial_stktop	
-	push %eax # multiboot ptr
+    mov $k_initial_stktop, %esp # Returns multiboot ptr in %eax
+    push $0
+    push $k_initial_stktop	
+    push %eax # multiboot ptr
 #	call kmain
-	call _Z5kmainPvS_
+    call _Z5kmainPvS_
 
 _stop:
     cli

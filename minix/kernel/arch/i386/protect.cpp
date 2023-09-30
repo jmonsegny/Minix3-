@@ -4,7 +4,7 @@
 
 void init_prot( GlobalDescTable& gdt, InterDescTable& idt, tss_s* tss )
 {
-	// Setup GDT and IDT    
+    // Setup GDT and IDT    
     gdt.load();
     idt.load();
 

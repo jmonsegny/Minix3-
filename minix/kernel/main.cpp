@@ -7,8 +7,8 @@ void kmain( void* multiboot, void* kernel_stk )
 {
     kprintf( "kmain --- Minix3++\n" );
 
-	static Kernel kernel;
-	kernel.init( multiboot, kernel_stk );
+    static Kernel kernel;
+    kernel.init( multiboot, kernel_stk );
 
-	while(1);
+    while(1);
 }

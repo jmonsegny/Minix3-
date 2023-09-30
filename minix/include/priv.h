@@ -2,5 +2,5 @@
 
 struct Priv
 {
-	int _s_proc_nr;	
+    int _s_proc_nr;	
 };

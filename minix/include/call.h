@@ -14,7 +14,7 @@ public:
 class CallDoFork : public Call
 {
 public:
-	int operator()(Proc& caller, Message& mess) override;
+    int operator()(Proc& caller, Message& mess) override;
 };
 
 class CallDoExec : public Call

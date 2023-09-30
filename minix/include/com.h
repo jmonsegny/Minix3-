@@ -59,7 +59,7 @@ const uint16_t SYS_RUNCTL       = KERNEL_CALL + 46;
 const uint16_t SYS_GETMCONTEXT  = KERNEL_CALL + 50;
 const uint16_t SYS_SETMCONTEXT  = KERNEL_CALL + 51;
  
-const uint16_t SYS_UPDATE	    = KERNEL_CALL + 52;
+const uint16_t SYS_UPDATE       = KERNEL_CALL + 52;
 const uint16_t SYS_EXIT	        = KERNEL_CALL + 53;
  
 const uint16_t SYS_SCHEDCTL     = KERNEL_CALL + 54;
@@ -70,4 +70,4 @@ const uint16_t SYS_SAFEMEMSET   = KERNEL_CALL + 56;
 const uint16_t SYS_PADCONF      = KERNEL_CALL + 57;
  
 // Total 
-const uint16_t NR_SYS_CALLS	    = 58;
+const uint16_t NR_SYS_CALLS     = 58;

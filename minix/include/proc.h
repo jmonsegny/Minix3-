@@ -10,14 +10,14 @@ const uint32_t PMAGIC = 0xC0FFEE1;
 
 struct Proc
 {
-	stackframe_s _p_reg;
-	int32_t _p_nr;
-	volatile uint32_t _p_rts_flags;
+    stackframe_s _p_reg;
+    int32_t _p_nr;
+    volatile uint32_t _p_rts_flags;
 
-	char _p_priority;
-	unsigned int _p_quantum_size_ms;
+    char _p_priority;
+    unsigned int _p_quantum_size_ms;
 
-	struct Proc* _p_scheduler;	
+    struct Proc* _p_scheduler;	
 
-	int32_t _p_magic;
+    int32_t _p_magic;
 };

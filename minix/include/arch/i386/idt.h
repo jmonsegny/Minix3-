@@ -7,16 +7,16 @@
 
 struct GateEntry
 {
-	void (*_gate)(void); // pointer to function
-	uint8_t _vec_nr;
-	uint8_t _priv;
+    void (*_gate)(void); // pointer to function
+    uint8_t _vec_nr;
+    uint8_t _priv;
 };
 
 class InterDescTable
 {
 public:
     InterDescTable();
-	void load();
+    void load();
 private:
     GateDesc _idt[IDT_SIZE];
     DescTablePtr _idt_ptr;
